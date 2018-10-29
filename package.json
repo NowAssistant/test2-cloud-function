@@ -1,0 +1,19 @@
+{
+  "name": "adenin-cloud-connector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "./node_modules/.bin/nodemon app.js"
+  },
+  "dependencies": {
+    "@adenin/cf-provider": "^1.0.0",
+    "@adenin/cf-logger": "^1.0.0",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
