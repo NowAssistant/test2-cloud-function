@@ -1,5 +1,5 @@
 {
-  "name": "adenin-cloud-connector",
+  "name": "test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,10 +8,13 @@
     "dev": "./node_modules/.bin/nodemon app.js"
   },
   "dependencies": {
-    "@adenin/cf-provider": "^1.0.0",
     "@adenin/cf-logger": "^1.0.0",
+    "@adenin/cf-provider": "^1.0.0",
+    "cardservice": "file:cardservice",
+    "emptyservice": "file:emptyservice",
     "koa": "^2.5.3",
-    "koa-bodyparser": "^4.2.1"
+    "koa-bodyparser": "^4.2.1",
+    "sqlservice": "file:sqlservice"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"

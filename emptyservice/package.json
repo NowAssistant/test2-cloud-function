@@ -1,0 +1,9 @@
+{
+  "name": "emptyservice",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "got": "*",
+    "tunnel-agent": "*"
+  }
+}
