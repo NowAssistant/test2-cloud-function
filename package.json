@@ -1,22 +1,13 @@
 {
   "name": "adenin-cloud-connector",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example cloud connector repo",
   "main": "index.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "./node_modules/.bin/nodemon app.js"
-  },
   "dependencies": {
-    "@adenin/cf-logger": "^1.0.0",
-    "@adenin/cf-provider": "^1.0.0",
+    "@adenin/cf-logger": "^1.0.1",
+    "@adenin/cf-provider": "^1.0.3",
     "cardservice": "file:cardservice",
     "emptyservice": "file:emptyservice",
-    "koa": "^2.5.3",
-    "koa-bodyparser": "^4.2.1",
     "sqlservice": "file:sqlservice"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
   }
 }
