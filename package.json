@@ -4,8 +4,8 @@
   "description": "Example cloud connector repo",
   "main": "index.js",
   "dependencies": {
-    "@adenin/cf-logger": "^1.0.1",
-    "@adenin/cf-provider": "^1.0.3",
+    "@adenin/cf-logger": "^1.1.1",
+    "@adenin/cf-provider": "^1.0.5",
     "cardservice": "file:cardservice",
     "emptyservice": "file:emptyservice",
     "sqlservice": "file:sqlservice"
