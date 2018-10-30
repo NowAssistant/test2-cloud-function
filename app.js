@@ -5,7 +5,7 @@ const logger = require('@adenin/cf-logger');
 
 const app = new Koa();
 
-const routes = require('./index');
+let routes = require('./index');
 
 app
     .use(bodyParser())
