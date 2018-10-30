@@ -40,7 +40,7 @@ app
             decache('./index');
             routes = require('./index');
 
-            logger.debug('Decached.');
+            logger.debug('Decached');
         }
     })
     .on('error', (err, ctx) => {
