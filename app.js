@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const decache = require('decache');
 const logger = require('@adenin/cf-logger');
 
 const app = new Koa();
@@ -31,6 +32,15 @@ app
                 error: 'Route not found',
                 routes: Object.keys(routes)
             };
+        }
+
+        if (process.env.NODE_ENV == 'development') {
+            logger.debug('Decaching...');
+
+            decache('./index');
+            routes = require('./index');
+
+            logger.debug('Decached.');
         }
     })
     .on('error', (err, ctx) => {
