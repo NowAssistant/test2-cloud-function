@@ -3,11 +3,20 @@
   "version": "1.0.0",
   "description": "Example cloud connector repo",
   "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "./node_modules/.bin/nodemon app.js"
+  },
   "dependencies": {
-    "@adenin/cf-logger": "^1.1.1",
-    "@adenin/cf-provider": "^1.0.5",
+    "@adenin/cf-logger": "^1.2.0",
+    "@adenin/cf-provider": "^1.0.7",
     "cardservice": "file:cardservice",
     "emptyservice": "file:emptyservice",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
     "sqlservice": "file:sqlservice"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   }
 }
