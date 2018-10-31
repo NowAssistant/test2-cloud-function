@@ -8,8 +8,8 @@
     "dev": "./node_modules/.bin/nodemon app.js"
   },
   "dependencies": {
-    "@adenin/cf-logger": "^1.2.3",
-    "@adenin/cf-provider": "^1.0.11",
+    "@adenin/cf-logger": "^1.2.5",
+    "@adenin/cf-provider": "^1.0.12",
     "cardservice": "file:cardservice",
     "decache": "^4.4.1",
     "emptyservice": "file:emptyservice",

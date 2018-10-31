@@ -43,11 +43,8 @@ app
             logger.debug('Decached');
         }
     })
-    .on('error', (err, ctx) => {
-        logger.error({
-            error: err,
-            context: ctx
-        });
+    .on('error', err => {
+        logger.error(err);
     })
     .listen(3000);
 
