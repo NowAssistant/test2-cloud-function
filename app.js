@@ -22,6 +22,13 @@ app
         }
     })
     .use(async ctx => {
+        if (process.env.NODE_ENV == 'development') {
+            logger.debug('Decaching...');
+
+            decache('./index');
+            routes = require('./index');
+        }
+
         const service = ctx.url.split('/')[1];
 
         if (routes[service]) {
@@ -32,15 +39,6 @@ app
                 error: 'Route not found',
                 routes: Object.keys(routes)
             };
-        }
-
-        if (process.env.NODE_ENV == 'development') {
-            logger.debug('Decaching...');
-
-            decache('./index');
-            routes = require('./index');
-
-            logger.debug('Decached');
         }
     })
     .on('error', err => {
