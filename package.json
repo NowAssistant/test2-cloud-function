@@ -18,6 +18,7 @@
     "sqlservice": "file:sqlservice"
   },
   "devDependencies": {
+    "eslint": "^5.8.0",
     "nodemon": "^1.18.4"
   }
 }

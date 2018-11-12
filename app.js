@@ -7,8 +7,7 @@ const app = new Koa();
 
 let routes = require('./index');
 
-app
-    .use(bodyParser())
+app.use(bodyParser())
     .use(async (ctx, next) => {
         try {
             await next();
