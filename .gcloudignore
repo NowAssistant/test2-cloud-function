@@ -16,7 +16,5 @@
 .git
 .gitignore
 node_modules
-*.zip
-.eslintrc.json
 app.js
-*.local.js
+*.zip

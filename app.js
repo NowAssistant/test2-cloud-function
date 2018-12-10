@@ -1,9 +1,13 @@
+'use strict';
+
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const decache = require('decache');
 const logger = require('@adenin/cf-logger');
 
 const app = new Koa();
+
+const PORT = 4000;
 
 let routes = require('./index');
 
@@ -20,8 +24,8 @@ app.use(bodyParser())
             ctx.app.emit('error', err, ctx);
         }
     })
-    .use(async ctx => {
-        if (process.env.NODE_ENV == 'development') {
+    .use(async (ctx) => {
+        if (process.env.NODE_ENV === 'development') {
             logger.debug('Decaching...');
 
             decache('./index');
@@ -40,9 +44,9 @@ app.use(bodyParser())
             };
         }
     })
-    .on('error', err => {
+    .on('error', (err) => {
         logger.error(err);
     })
-    .listen(3000);
+    .listen(PORT);
 
-logger.info('Server running on port 3000');
+logger.info('Server running on port ' + PORT);
