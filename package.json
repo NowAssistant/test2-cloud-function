@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@adenin/cf-logger": "^1.2.5",
-    "@adenin/cf-provider": "^1.0.12",
+    "@adenin/cf-provider": "^1.1.0",
     "cardservice": "file:cardservice",
     "decache": "^4.4.1",
     "emptyservice": "file:emptyservice",
