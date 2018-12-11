@@ -1,6 +1,6 @@
 'use strict';
 
-const provide = require('../cf-provider');
+const provide = require('@adenin/cf-provider');
 const {resolve} = require('path');
 
 provide(exports, resolve(__dirname));

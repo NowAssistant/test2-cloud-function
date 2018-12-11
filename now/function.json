@@ -17,5 +17,5 @@
         }
     ],
     "scriptFile": "../index.js",
-    "entryPoint": "cardservice"
+    "entryPoint": "now"
 }
