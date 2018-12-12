@@ -9,7 +9,7 @@
             "methods": [
                 "post"
             ],
-            "route": "test2/{service}"
+            "route": "{service}"
         },
         {
             "type": "http",
