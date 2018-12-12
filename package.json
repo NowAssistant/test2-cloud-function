@@ -1,5 +1,5 @@
 {
-  "name": "test1-cloud-function",
+  "name": "test2-cloud-function",
   "version": "1.0.0",
   "description": "Test cloud function repo",
   "main": "index.js",
@@ -9,12 +9,11 @@
   },
   "dependencies": {
     "@adenin/cf-logger": "^1.2.6",
-    "@adenin/cf-provider": "^1.1.0",
-    "hello": "file:hello",
-    "now": "file:now",
+    "@adenin/cf-provider": "^2.0.0",
     "decache": "^4.5.0",
     "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1"
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = async function (activity) {
+module.exports = async (activity) => {
     try {
         activity.Response.Data = 'hello, ' + activity.Request.Path;
     } catch (error) {

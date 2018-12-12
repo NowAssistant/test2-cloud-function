@@ -1,17 +1,31 @@
 'use strict';
 
 const Koa = require('koa');
+const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const decache = require('decache');
 const logger = require('@adenin/cf-logger');
 
 const app = new Koa();
+const router = new Router();
 
 const PORT = 4000;
 
-let routes = require('./index');
+let controller = require('./index');
 
-app.use(bodyParser())
+router.post('/:service', async (ctx) => {
+    if (process.env.NODE_ENV === 'development') {
+        logger.debug('Decaching...');
+
+        decache('./index');
+        controller = require('./index');
+    }
+
+    await controller.function(ctx);
+});
+
+app
+    .use(bodyParser())
     .use(async (ctx, next) => {
         try {
             await next();
@@ -24,26 +38,8 @@ app.use(bodyParser())
             ctx.app.emit('error', err, ctx);
         }
     })
-    .use(async (ctx) => {
-        if (process.env.NODE_ENV === 'development') {
-            logger.debug('Decaching...');
-
-            decache('./index');
-            routes = require('./index');
-        }
-
-        const service = ctx.url.split('/')[1];
-
-        if (routes[service]) {
-            await routes[service](ctx);
-        } else {
-            ctx.status = 404;
-            ctx.body = {
-                error: 'Route not found',
-                routes: Object.keys(routes)
-            };
-        }
-    })
+    .use(router.routes())
+    .use(router.allowedMethods())
     .on('error', (err) => {
         logger.error(err);
     })
