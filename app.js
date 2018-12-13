@@ -13,7 +13,7 @@ const PORT = 4000;
 
 let controller = require('./index');
 
-router.post('/:service', async (ctx) => {
+router.post('/:activity', async (ctx) => {
     if (process.env.NODE_ENV === 'development') {
         logger.debug('Decaching...');
 
@@ -41,7 +41,9 @@ app
     .use(router.routes())
     .use(router.allowedMethods())
     .on('error', (err) => {
-        logger.error(err);
+        logger.error(
+            JSON.stringify(err, null, 4)
+        );
     })
     .listen(PORT);
 

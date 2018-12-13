@@ -9,7 +9,7 @@
             "methods": [
                 "post"
             ],
-            "route": "{service}"
+            "route": "{activity}"
         },
         {
             "type": "http",
