@@ -39,13 +39,15 @@ yo @adenin/cloud-function:activity myactivity:empty
 
 In the project root, `index.js` is where the cloud function entrypoint is exported, under the named export `function`. Then `app.js` is the local Koa server that can be used to test activities prior to deployment.
 
-The activity scripts themselves should all be placed in the `/activities` folder - every javascript file within this folder will be made accessible from the cloud function, so it should only contain functions that you desire to export as entrypoints. Any helper scripts that these functions need to use should instead be stored in another directory or directories in the project root, or at the project root level itself. 
+The activity scripts themselves should all be placed in the `/activities` folder - every javascript file within this folder will be made accessible from the cloud function, so it should only contain functions that you desire to export as entrypoints. Any helper scripts that these functions need to use should instead be stored in the `/common` subdirectory. 
 
 The `function.json` is for Azure functions and defines the way the deployed function should behave, it must remain in place and should probably not be modified unless explicitly required.
 
 ## Implement
 
 To finish creating our mirror of this repository, we now need to implement the functionality of the _hello_ and _now_ activities. Open `hello.js` and `now.js` and replace the contents of the `try` block with the following...
+
+>For this example we will just implement the behaviour directly, rather than using helper functions like the `/common/utils.js` scripts used in this repo for demonstration.
 
 In `now.js`:
 ```js
@@ -95,7 +97,7 @@ If sending a request with an API key in the header, remember to set the `API_KEY
 
 ### Multi-repo cf-server
 
-There is also a more dedicated local server provided by the [cf-server](https://gitlab.com/adenin-team/cf-server) repo. It functions much the same way as the local server except is also capable of serving multiple function repos at once at endpoints in the format `/{repoDirectoryName}/{activity}`.
+There is also a more dedicated local server provided by the [cf-server](https://gitlab.com/adenin-team/cf-server) repo. It functions much the same way as the local server except is also capable of serving multiple function repos at once at endpoints in the format `/{repo}/{activity}`.
 
 Simply clone the cf-server repo into the directory that this project is also sitting in - ensure that directory contains nothing but the cf-server folder and then your cloud connector folders. If you need to add directories that are not cloud function repos, you must prefix the directory name with `_` or `.` to prevent the server from attempting to serve the directory as a function repo.
 
@@ -112,10 +114,10 @@ Install the [Google Cloud Platform CLI](https://cloud.google.com/sdk) and config
 ```bash
 cd test2-cloud-connector
 
-gcloud functions deploy test2 --entry-point function --trigger-http --runtime nodejs8
+gcloud functions deploy test2 --entry-point activities --trigger-http --runtime nodejs8
 ```
 
-Here _test2_ is the name your function will be given after deployment, and 'function' is the name of the entrypoint for execution - this should not be changed and will remain the same for all cloud function repos.
+Here _test2_ is the name your function will be given after deployment, and 'activities' is the name of the entrypoint for execution - this should not be changed and will remain the same for all cloud function repos.
 
 The function will then be assigned to an HTTP endpoint, in this case:
 
@@ -140,12 +142,12 @@ cd test2-cloud-connector
 
 7z a -tzip index.zip ./
 
-aws lambda create-function --function-name test2 --runtime nodejs8.10 --role <aws_role_number> --handler index.function --zip-file fileb://index.zip
+aws lambda create-function --function-name test2 --runtime nodejs8.10 --role <aws_role_number> --handler index.activities --zip-file fileb://index.zip
 
 rm ./index.zip
 ```
 
-Here, `index.function` again refers to the execution entrypoint from `index.js`.
+Here, `index.activities` again refers to the execution entrypoint from `index.js`.
 
 The `<aws_role_number>` will be specific to your account, and will require you to set up an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) with Lambda execution privileges from the AWS console.
 
