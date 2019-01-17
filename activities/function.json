@@ -18,5 +18,5 @@
         }
     ],
     "scriptFile": "../index.js",
-    "entryPoint": "function"
+    "entryPoint": "activities"
 }

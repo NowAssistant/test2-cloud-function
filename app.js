@@ -11,17 +11,17 @@ const router = new Router();
 
 const PORT = 4000;
 
-let controller = require('./index');
+let index = require('./index');
 
 router.post('/:activity', async (ctx) => {
     if (process.env.NODE_ENV === 'development') {
         logger.debug('Decaching...');
 
         decache('./index');
-        controller = require('./index');
+        index = require('./index');
     }
 
-    await controller.function(ctx);
+    await index.activities(ctx);
 });
 
 app
@@ -41,9 +41,7 @@ app
     .use(router.routes())
     .use(router.allowedMethods())
     .on('error', (err) => {
-        logger.error(
-            JSON.stringify(err, null, 4)
-        );
+        logger.error(JSON.stringify(err, null, 4));
     })
     .listen(PORT);
 
