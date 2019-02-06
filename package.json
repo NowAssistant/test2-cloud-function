@@ -1,7 +1,7 @@
 {
-  "name": "test2-cloud-function",
+  "name": "test-cloud-function",
   "version": "1.0.0",
-  "description": "Test cloud function repo",
+  "description": "test-cloud-function cloud function repository",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
@@ -10,7 +10,9 @@
   "dependencies": {
     "@adenin/cf-logger": "^1.4.0",
     "@adenin/cf-provider": "^2.3.0",
+    "agentkeepalive": "^4.0.0",
     "decache": "^4.5.1",
+    "got": "^9.6.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0"

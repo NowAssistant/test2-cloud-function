@@ -1,0 +1,8 @@
+ServiceName: 'hello'
+InterfaceName: ''
+Description: 'hello'
+APIDoc: ''
+Interfaces: ''
+RequiredScopes: ''
+AdditionalParameters:
+Method: ''
