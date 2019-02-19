@@ -1,4 +1,4 @@
-# test2-cloud-function
+# test-cloud-function
 
 This repo is an example of an adenin cloud function repository. This readme will cover the cloud function repository structure and functionality, associated node modules, and instructions for running the functions on local environments as well as deployment to cloud providers.
 
