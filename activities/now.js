@@ -1,11 +1,11 @@
 'use strict';
 
-const {handleError} = require('@adenin/cf-activity');
+const api = require('./common/api');
 
 module.exports = async (activity) => {
   try {
     activity.Response.Data = new Date().toISOString();
   } catch (error) {
-    handleError(error, activity);
+    api.handleError(error, activity);
   }
 };

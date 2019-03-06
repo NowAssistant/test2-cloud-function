@@ -4,7 +4,7 @@ This repo is an example of an adenin cloud function repository. This readme will
 
 ## Generate
 
-A new cloud function repository should be created via the [cloud-connector](https://www.npmjs.com/package/@adenin/generator-cloud-function ) Yeoman generator. 
+A new cloud function repository should be created via the [cloud-connector](https://www.npmjs.com/package/@adenin/generator-cloud-function ) Yeoman generator.
 
 First install Yeoman and the generator:
 
@@ -39,7 +39,7 @@ yo @adenin/cloud-function:activity myactivity:empty
 
 In the project root, `index.js` is where the cloud function entrypoint is exported, under the named export `function`. Then `app.js` is the local Koa server that can be used to test activities prior to deployment.
 
-The activity scripts themselves should all be placed in the `/activities` folder - every javascript file within this folder will be made accessible from the cloud function, so it should only contain functions that you desire to export as entrypoints. Any helper scripts that these functions need to use should instead be stored in the `/common` subdirectory. 
+The activity scripts themselves should all be placed in the `/activities` folder - every javascript file within this folder will be made accessible from the cloud function, so it should only contain functions that you desire to export as entrypoints. Any helper scripts that these functions need to use should instead be stored in the `/common` subdirectory.
 
 The `function.json` is for Azure functions and defines the way the deployed function should behave, it must remain in place and should probably not be modified unless explicitly required.
 
@@ -50,11 +50,13 @@ To finish creating our mirror of this repository, we now need to implement the f
 >For this example we will just implement the behaviour directly, rather than using helper functions like the `/common/utils.js` scripts used in this repo for demonstration.
 
 In `now.js`:
+
 ```js
 activity.Response.Data = new Date().toISOString();
 ```
 
 In `hello.js`:
+
 ```js
 activity.Response.Data = 'hello, ' + activity.Request.Path;
 ```
@@ -133,7 +135,7 @@ This is because my default project name was set to _adenin-gcp-poc_. You may now
 
 Similar to GCP, you will first need to set up the [AWS CLI](https://aws.amazon.com/cli/) and authenticate it with your AWS account login.
 
-As AWS deployment requires a `.zip` file, you may also want to install and configure [7zip CLI](https://www.7-zip.org/) (Windows), or equivalent for your OS. 
+As AWS deployment requires a `.zip` file, you may also want to install and configure [7zip CLI](https://www.7-zip.org/) (Windows), or equivalent for your OS.
 
 Once the environment is configured, the functions can be deployed to AWS Lambda as follows:
 
