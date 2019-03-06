@@ -188,3 +188,5 @@ With the function app name 'adenin-functions', the endpoint would be as follows:
 `https://adenin-functions.azurewebsites.net/api/:activity`
 
 Again, you may want to configure environment variables within the function app console under 'application settings'.
+
+Also, see the documentation on using Azure pipelines for deployment in the [Azure deployment](/docs/DeployAzure.md) documentation.
