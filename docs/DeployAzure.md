@@ -105,9 +105,9 @@ Set **Continuous deployment trigger** to **Enabled**, and add a build branch fil
 
 ![releasePipelineTriggerSelection](assets/releasePipelineTriggerSelection.png)
 
-For the final configuration steps, move to the **Tasks** tab, and first select **Stage 1 Deployment process**. 
+For the final configuration steps, move to the **Tasks** tab, and first select **Stage 1 Deployment process**.
 
-Here you will want to authorize Azure devops to link to your **Azure subscription** (so that the devops portal is able to find your function apps). 
+Here you will want to authorize Azure devops to link to your **Azure subscription** (so that the devops portal is able to find your function apps).
 
 Then set **App type** to **Function app**, and select the function app you wish to deploy to under **App service name** (you first need to create the function app resource to deploy to in the [Azure portal](https://portal.azure.com)).
 
