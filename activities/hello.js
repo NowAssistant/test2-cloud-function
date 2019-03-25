@@ -1,11 +1,11 @@
 'use strict';
 
-const api = require('./common/api');
-
-module.exports = async (activity) => {
+module.exports = async () => {
   try {
-    activity.Response.Data = 'hello, ' + activity.Request.Path;
+    logger.info('\'Hello\' activity was called');
+
+    Activity.Response.Data = 'hello, ' + Activity.Request.Path;
   } catch (error) {
-    api.handleError(error, activity);
+    Activity.handleError(error);
   }
 };

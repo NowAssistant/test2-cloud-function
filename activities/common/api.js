@@ -4,9 +4,7 @@ const got = require('got');
 const HttpAgent = require('agentkeepalive');
 const HttpsAgent = HttpAgent.HttpsAgent;
 
-const cfActivity = require('@adenin/cf-activity');
-
-let _activity = null;
+const endpoint = 'https://jsonplaceholder.typicode.com';
 
 function api(path, opts) {
   if (typeof path !== 'string') {
@@ -15,8 +13,8 @@ function api(path, opts) {
 
   opts = Object.assign({
     json: true,
-    token: _activity.Context.connector.token,
-    endpoint: _activity.Context.connector.endpoint,
+    token: Activity.Context.connector.token,
+    endpoint: endpoint,
     agent: {
       http: new HttpAgent(),
       https: new HttpsAgent()
@@ -32,7 +30,7 @@ function api(path, opts) {
     opts.headers.Authorization = `Bearer ${opts.token}`;
   }
 
-  const url = /^http(s)\:\/\/?/.test(path) && opts.endpoint ? path : opts.endpoint + path;
+  const url = /^http(s)\:\/\/?/.test(path) ? path : opts.endpoint + path;
 
   if (opts.stream) {
     return got.stream(url, opts);
@@ -57,26 +55,26 @@ api.stream = (url, opts) => got(url, Object.assign({}, opts, {
   stream: true
 }));
 
-api.initialize = function (activity) {
-  _activity = activity;
-};
-
 for (const x of helpers) {
   const method = x.toUpperCase();
   api[x] = (url, opts) => api(url, Object.assign({}, opts, {method}));
   api.stream[x] = (url, opts) => api.stream(url, Object.assign({}, opts, {method}));
 }
 
-api.handleError = function (activity, error, authRequiresStatusCodes) {
-  return cfActivity.handleError(activity, error, authRequiresStatusCodes);
+api.handleError = function (error, authRequiresStatusCodes) {
+  return Activity.handleError(error, authRequiresStatusCodes);
 };
 
-api.isResponseOk = function (activity, response, succssStatusCodes) {
-  return cfActivity.isResponseOk(activity, response, succssStatusCodes);
+api.isErrorResponse = function (response, successStatusCodes) {
+  return Activity.isErrorResponse(response, successStatusCodes);
 };
 
-api.dateRange = function (activity, defaultRange) {
-  return cfActivity.dateRange(activity, defaultRange);
+api.dateRange = function (defaultRange) {
+  return Activity.dateRange(defaultRange);
+};
+
+api.pagination = function () {
+  return Activity.pagination();
 };
 
 module.exports = api;

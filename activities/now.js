@@ -1,11 +1,11 @@
 'use strict';
 
-const api = require('./common/api');
-
-module.exports = async (activity) => {
+module.exports = async () => {
   try {
-    activity.Response.Data = new Date().toISOString();
+    logger.info('\'Now\' activity was called');
+
+    Activity.Response.Data = new Date().toISOString();
   } catch (error) {
-    api.handleError(error, activity);
+    Activity.handleError(error);
   }
 };
