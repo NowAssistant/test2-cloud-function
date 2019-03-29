@@ -4,8 +4,6 @@ const got = require('got');
 const HttpAgent = require('agentkeepalive');
 const HttpsAgent = HttpAgent.HttpsAgent;
 
-const endpoint = 'https://jsonplaceholder.typicode.com';
-
 function api(path, opts) {
   if (typeof path !== 'string') {
     return Promise.reject(new TypeError(`Expected \`path\` to be a string, got ${typeof path}`));
@@ -14,7 +12,7 @@ function api(path, opts) {
   opts = Object.assign({
     json: true,
     token: Activity.Context.connector.token,
-    endpoint: endpoint,
+    endpoint: 'https://jsonplaceholder.typicode.com',
     agent: {
       http: new HttpAgent(),
       https: new HttpsAgent()

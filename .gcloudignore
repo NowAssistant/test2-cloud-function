@@ -1,9 +1,10 @@
+*.zip
+.DS_Store
 .gcloudignore
 .git
 .gitignore
 .vscode/
-node_modules/
-app.js
 activities/function.json
+app.js
 host.json
-*.zip
+node_modules/
